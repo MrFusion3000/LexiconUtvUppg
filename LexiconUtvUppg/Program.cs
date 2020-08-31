@@ -111,9 +111,9 @@ namespace LexiconUtvUppg
                 Console.WriteLine("1. Uppg  9 - Roten ur det onda");
                 Console.WriteLine("2. Uppg 10 - Multiplikationstabella, ella, ella, ella");
                 Console.WriteLine("3. Uppg 11 - 2 Arrayer; 1 slumpad, 1 sorterad");
-                Console.WriteLine("4. Uppg 12 - ");
-                Console.WriteLine("5. Uppg 13 - ");
-                Console.WriteLine("6. Uppg 14 - ");
+                Console.WriteLine("4. Uppg 12 - Michael Palin-drome");
+                Console.WriteLine("5. Uppg 13 - Mellanliggande tal");
+                Console.WriteLine("6. Uppg 14 - Sortera Udda/Jämna");
                 Console.WriteLine("7. Uppg 15 - ");
                 Console.WriteLine("8. Uppg 16 - \n");
                 Console.WriteLine("9. Övning 1-9 \n\n");
@@ -488,19 +488,46 @@ namespace LexiconUtvUppg
 
             Console.WriteLine("Skriv in ett ord: ");
             string palin = Console.ReadLine();
-
-
+            char[] ch = palin.ToCharArray();
+            Array.Reverse(ch);
+            string rev = new string(ch);
+            bool b = palin.Equals(rev, StringComparison.OrdinalIgnoreCase);
+            if (b == true)
+            {
+                Console.WriteLine("Snyggt! " + palin + " är en Palindrom!");
+            }
+            else
+            {
+                Console.WriteLine("" + palin + " är dessvärre inte en Palindrom!");
+            }
 
             GetBack();
         }
 
-        public void Uppg13()
+        public void Uppg13()        //Skriv ut mellanliggande tal
         {
             Console.Clear();
-            Console.WriteLine("* ** *** Uppgift 13 -   *** ** *\n");
+            Console.WriteLine("* ** *** Uppgift 13 - Skriv ut mellanliggande tal  *** ** *\n");
 
+            int value1;
+            int value2;
+            int result;
 
+            Console.WriteLine("Ange tal1: ");
+            value1 = Convert.ToInt32(Console.ReadLine());
 
+            Console.WriteLine("Ange tal2: ");
+            value2 = Convert.ToInt32(Console.ReadLine());
+
+            result = value2 - value1;
+
+            Console.Write("\n\n");
+            Console.Write("Tal mellan {0} och {1}: \n", value1, value2);
+
+            for (int i = 1; i <= result-1; i++)
+            {
+                Console.WriteLine("" + (value1 + i));
+            }
 
             GetBack();
         }
@@ -508,7 +535,7 @@ namespace LexiconUtvUppg
         public void Uppg14()
         {
             Console.Clear();
-            Console.WriteLine("* ** *** Uppgift 14 -   *** ** *\n");
+            Console.WriteLine("* ** *** Uppgift 14 - Sortera Udda/Jämna  *** ** *\n");
 
 
 
