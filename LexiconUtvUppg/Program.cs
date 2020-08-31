@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace LexiconUtvUppg
 {
@@ -107,9 +108,9 @@ namespace LexiconUtvUppg
                 Console.WriteLine("* ** *** H U V U D M E N Y (2/2) *** ** *\n");
 
                 Console.WriteLine("Välj ett alternativ (och tryck Enter):\n");
-                Console.WriteLine("1. Uppg  9 - ");
-                Console.WriteLine("2. Uppg 10 - ");
-                Console.WriteLine("3. Uppg 11 - ");
+                Console.WriteLine("1. Uppg  9 - Roten ur det onda");
+                Console.WriteLine("2. Uppg 10 - Multiplikationstabella, ella, ella, ella");
+                Console.WriteLine("3. Uppg 11 - 2 Arrayer; 1 slumpad, 1 sorterad");
                 Console.WriteLine("4. Uppg 12 - ");
                 Console.WriteLine("5. Uppg 13 - ");
                 Console.WriteLine("6. Uppg 14 - ");
@@ -364,33 +365,129 @@ namespace LexiconUtvUppg
             GetBack();
         }
 
-        public void Uppg10()
+        public void Uppg10()        //Multiplikationstabell
         {
             Console.Clear();
-            Console.WriteLine("* ** *** Uppgift 10 -   *** ** *\n");
+            Console.WriteLine("* ** *** Uppgift 10 - Mulitplikationstabell *** ** *\n");
 
+            int[] tabellArray = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
+            Console.Write("  |");
 
+            // Skriv ut x horisontellt
+            for (int i = 0; i < tabellArray.Length; i++)
+            {
+                string testLengthi = Convert.ToString(tabellArray[i]);
+
+                if (testLengthi.Length == 1)
+                {
+                    Console.Write("   {0}|", tabellArray[i]);
+                }
+                else if (testLengthi.Length == 2)
+                {
+                    Console.Write("  {0}|", tabellArray[i]);
+                }
+            }
+
+            Console.Write("\n");
+            Console.Write("---");
+
+            for (int i = 0; i < tabellArray.Length; i++)
+            {                
+                    Console.Write("-----", tabellArray[i]);                
+            }
+
+            Console.Write("\n");
+
+            // Skriv ut y vertikalt
+            for (int i = 0; i < tabellArray.Length; i++)
+            {
+                string testLengthi = Convert.ToString(tabellArray[i]);
+
+                if (testLengthi.Length == 1)
+                {
+                    Console.Write(" {0}|", tabellArray[i]);                    
+                }
+                else
+                {
+                    Console.Write("{0}|", tabellArray[i]);
+                }
+
+                {
+                    for (int j = 0; j < tabellArray.Length; j++)
+                    {
+                        int result = tabellArray[i] * tabellArray[j];
+
+                        string testLength = Convert.ToString(result);
+
+                        if (testLength.Length == 1)
+
+                        {
+                            // Skriv ut varje tabellrad med 2 blanksteg mellan varje tal om talets längd är 1 (1-9)
+                            Console.Write("   {0}|", result);
+                        }
+                        else if (testLength.Length == 2)
+                        {
+                            // Skriv ut varje tabellrad med 1 blanksteg mellan varje tal om talets längd är 2 (10-99)
+                            {
+                                Console.Write("  {0}|", result);
+                            }
+                        }
+                        else if (testLength.Length == 3)
+                        {
+                            // Skriv ut varje tabellrad med 1 blanksteg mellan varje tal om talets längd är 3 (100+)
+                            {
+                                Console.Write(" {0}|", result);
+                            }
+                        }
+                    }                    
+                }
+
+                Console.Write("\n");
+            }
 
             GetBack();
         }
 
-        public void Uppg11()
+        public void Uppg11()        // 2 Arrayer; 1 slumpad, 1 sorterad
         {
             Console.Clear();
-            Console.WriteLine("* ** *** Uppgift 11 -   *** ** *\n");
+            Console.WriteLine("* ** *** Uppgift 11 - 2 Arrayer; 1 slumpad, 1 sorterad   *** ** *\n");
+
+            var arraySlump = new int[10];
+            var arraySorterad = new int[10];
+            var slumptal = new Random();
+
+            Console.Write("Osorterad array:\n");
+
+            for (int i = 0; i < arraySlump.Length; i++)
+            {
+                arraySlump[i] = slumptal.Next(1,100);
+                arraySorterad[i] = arraySlump[i];
+                 Console.Write("{0} ", arraySlump[i]);
+            }
+
+            Console.Write("\n\n");
+            Console.Write("Sorterad array:\n");
 
 
+            Array.Sort(arraySorterad);
 
+            for (int i = 0; i < arraySorterad.Length; i++)
+            {
+                Console.Write("{0} ", arraySorterad[i]);
+            }
 
             GetBack();
         }
 
-        public void Uppg12()
+        public void Uppg12()        // Palindrom
         {
             Console.Clear();
-            Console.WriteLine("* ** *** Uppgift 12 -   *** ** *\n");
+            Console.WriteLine("* ** *** Uppgift 12 - Michael Palin(drom)  *** ** *\n");
 
+            Console.WriteLine("Skriv in ett ord: ");
+            string palin = Console.ReadLine();
 
 
 
