@@ -532,13 +532,89 @@ namespace LexiconUtvUppg
             GetBack();
         }
 
-        public void Uppg14()
+        public void Uppg14()        // Sortera Udda/Jämna
         {
+            char[] charsToTrim = { ' ', ',' };
+            int j = 0;
+
             Console.Clear();
             Console.WriteLine("* ** *** Uppgift 14 - Sortera Udda/Jämna  *** ** *\n");
 
+            Console.WriteLine("Skriv in ett antal tal (avgränsade med kommatecken): ");
+            string inputToSortOddEven = Console.ReadLine();
+            string[] inputList = inputToSortOddEven.Split(",");
 
+            //dela upp textsträng med kommatecken (,) som avdelare
+            //placera varje tal i en array  
 
+            int[] numbersToSort = new int[inputList.Length];
+
+            Console.Write("\nSträng konverterad till separata tal: ");
+            foreach (string input in inputList)
+            {
+                string result = input.Trim(charsToTrim);
+                numbersToSort[j] = Convert.ToInt32(result);
+                Console.Write(" " + result);
+                j++;
+            }
+
+            //Sortera array
+            Array.Sort(numbersToSort);
+
+            Console.Write("\n\nTal sorterade: ");
+
+            int evenCount = 0;
+            int oddCount = 0;
+
+            for (int i = 0; i < numbersToSort.Length; i++)
+            {
+                Console.Write(" " + numbersToSort[i]);
+                if (numbersToSort[i] % 2 == 0)
+                {
+                    evenCount++;
+                }
+                else
+                {
+                    oddCount++;
+                }
+            }
+
+            int[] evenNumbers = new int[evenCount];
+            int[] oddNumbers = new int[oddCount];
+            int evenUp = 0;
+            int oddUp = 0;
+
+            for (int i = 0; i < numbersToSort.Length; i++)
+            {
+                //Console.Write(" " + numbersToSort[i]);
+
+                if (numbersToSort[i] % 2 == 0)
+                {
+                    evenNumbers[evenUp] = numbersToSort[i];
+                    evenUp++;
+                }
+                else
+                {
+                    oddNumbers[oddUp] = numbersToSort[i];
+                    oddUp++;
+                }
+            }
+
+            Console.Write("\n\nJämna tal: ");
+
+            for (int i = 0; i < evenNumbers.Length; i++)
+            {
+                Console.Write(" " + evenNumbers[i]);
+
+            }
+
+            Console.Write("\n\nUdda tal: ");
+
+            for (int i = 0; i < oddNumbers.Length; i++)
+            {
+                Console.Write(" " + oddNumbers[i]);
+
+            }
 
             GetBack();
         }
