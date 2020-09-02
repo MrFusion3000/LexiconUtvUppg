@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Security.Cryptography.X509Certificates;
 
 namespace LexiconUtvUppg
 {
@@ -109,13 +110,13 @@ namespace LexiconUtvUppg
 
                 Console.WriteLine("Välj ett alternativ (och tryck Enter):\n");
                 Console.WriteLine("1. Uppg  9 - Roten ur det onda");
-                Console.WriteLine("2. Uppg 10 - Multiplikationstabella, ella, ella, ella");
+                Console.WriteLine("2. Uppg 10 - Multiplikationstabella', ella', ella'");
                 Console.WriteLine("3. Uppg 11 - 2 Arrayer; 1 slumpad, 1 sorterad");
                 Console.WriteLine("4. Uppg 12 - Michael Palin-drome");
                 Console.WriteLine("5. Uppg 13 - Mellanliggande tal");
                 Console.WriteLine("6. Uppg 14 - Sortera Udda/Jämna");
-                Console.WriteLine("7. Uppg 15 - ");
-                Console.WriteLine("8. Uppg 16 - \n");
+                Console.WriteLine("7. Uppg 15 - Addera tal");
+                Console.WriteLine("8. Uppg 16 - En fråga om Klass eller en Klassfråga?\n");
                 Console.WriteLine("9. Övning 1-9 \n\n");
                 Console.WriteLine("0. Avsluta \n");
 
@@ -232,15 +233,15 @@ namespace LexiconUtvUppg
             Console.Clear();
             Console.WriteLine("* ** *** Uppgift 3 - Ändra textfärg *** ** *\n");
 
-            if (Console.ForegroundColor == ConsoleColor.White)
-            {
-                Console.ForegroundColor = ConsoleColor.Blue;
-                Console.WriteLine("\nKonsollens förgrundsfärg är nu blå.");
-            }
-            else
+            if (Console.ForegroundColor == ConsoleColor.Blue)
             {
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("\nKonsollens förgrundsfärg är nu vit.");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine("\nKonsollens förgrundsfärg är nu blå.");
             }
 
             GetBack();
@@ -284,41 +285,38 @@ namespace LexiconUtvUppg
             Console.Clear();
             Console.WriteLine("* ** *** Uppgift 6 - Gissa talet  *** ** *\n");
 
-            int antalForsok = 1;                                            // Heltalsvariabel för att räkna antal försök innan spelaren träffar rätt. 
-            Random redRum = new Random();                                   // Skapa instans av slumpgeneratorn Random och tillge heltalsvariabeln redRum
-            int slumpatTal = redRum.Next(1, 100);                           // Ange intervallet 1-10 (måste alltid ha +1 i för önskat intervall)
-            int gissatTal = 0;                                              // Initiera variabel för användarens gissning
+            int antalForsok = 1;                                             
+            Random redRum = new Random();                                   
+            int slumpatTal = redRum.Next(1, 100);                         
+            int gissatTal = 0;                      
 
-            while (gissatTal != slumpatTal)                                 // While-Loop tills användaren tröttnar på att spela
+            while (gissatTal != slumpatTal)                                 
             {
-
-
-                Console.Write("Gissa ett nummer mellan 1 och 100.");                // Skriv ut instruktion till användaren
+                Console.Write("Gissa ett nummer mellan 1 och 100.");                
                 Console.Write(Environment.NewLine);
-                string dullBoy = Console.ReadLine();                                // Erhåll respons från användaren och lagra i strängvariabeln dullBoy
-                gissatTal = Convert.ToInt32(dullBoy);                               // Konvertera indatasträngen till heltalsvariabeln gissatTal
+                string dullBoy = Console.ReadLine();                                
+                gissatTal = Convert.ToInt32(dullBoy);                               
 
-                if (gissatTal < slumpatTal)                                         // Eller om fel tal angetts av användaren
+                if (gissatTal < slumpatTal)                                         
                 {
-                    Console.WriteLine("Eeek, no can do! För lågt!");   // Meddelande till användaren att fel tal angetts och presentera rätt tal
-                    Console.WriteLine("Försök nr: " + antalForsok + "."); // och hur många försök.
+                    Console.WriteLine("Eeek, no can do! För lågt!");   
+                    Console.WriteLine("Försök nr: " + antalForsok + "."); 
                     antalForsok++;
                 }
-                else if (gissatTal > slumpatTal)                                                       // Eller om fel tal angetts av användaren
+                else if (gissatTal > slumpatTal)                       
                 {
-                    Console.WriteLine("Yikes! För högt!");   // Meddelande till användaren att fel tal angetts och presentera rätt tal
-                    Console.WriteLine("Försök nr: " + antalForsok + "."); // och hur många försök.
+                    Console.WriteLine("Yikes! För högt!");   
+                    Console.WriteLine("Försök nr: " + antalForsok + "."); 
                     antalForsok++;
                 }
             }
-            if (gissatTal == slumpatTal)                                // Kontrollera om rätt tal angetts av användaren
+            if (gissatTal == slumpatTal)                                
             {
-                Console.WriteLine("Snyggt!");                        // Meddelande till användaren att rätt svar angetts
-                Console.WriteLine("Det tog dig " + antalForsok + " försök att hitta rätt."); // och hur många försök
-                //antalForsok = 1;                                        // Nollställ antal försök-räknaren
+                Console.WriteLine("Snyggt!");                        
+                Console.WriteLine("Det tog dig " + antalForsok + " försök att hitta rätt."); 
             }
             
-            Console.WriteLine("All work and no play makes Jack a dull boy..."); // Avslutsmeddelande     
+            Console.WriteLine("All work and no play makes Jack a dull boy...");      
 
             GetBack();
         }
@@ -534,19 +532,19 @@ namespace LexiconUtvUppg
 
         public void Uppg14()        // Sortera Udda/Jämna
         {
-            char[] charsToTrim = { ' ', ',' };
-            int j = 0;
-
             Console.Clear();
             Console.WriteLine("* ** *** Uppgift 14 - Sortera Udda/Jämna  *** ** *\n");
 
+            char[] charsToTrim = { ' ', ','};
+            int j = 0;
+
             Console.WriteLine("Skriv in ett antal tal (avgränsade med kommatecken): ");
             string inputToSortOddEven = Console.ReadLine();
+
+            // Skapa sträng-array av tal separerade av komma
             string[] inputList = inputToSortOddEven.Split(",");
 
-            //dela upp textsträng med kommatecken (,) som avdelare
-            //placera varje tal i en array  
-
+            //dela upp textsträng med kommatecken (,) som avdelare placera varje tal i en array  
             int[] numbersToSort = new int[inputList.Length];
 
             Console.Write("\nSträng konverterad till separata tal: ");
@@ -554,11 +552,12 @@ namespace LexiconUtvUppg
             {
                 string result = input.Trim(charsToTrim);
                 numbersToSort[j] = Convert.ToInt32(result);
-                Console.Write(" " + result);
+                Console.Write(" {0}", numbersToSort[j]);
+
                 j++;
             }
 
-            //Sortera array
+            //Sortera array i fallande ordning
             Array.Sort(numbersToSort);
 
             Console.Write("\n\nTal sorterade: ");
@@ -566,6 +565,7 @@ namespace LexiconUtvUppg
             int evenCount = 0;
             int oddCount = 0;
 
+            // Sortera ut Udda/Jämna
             for (int i = 0; i < numbersToSort.Length; i++)
             {
                 Console.Write(" " + numbersToSort[i]);
@@ -619,24 +619,104 @@ namespace LexiconUtvUppg
             GetBack();
         }
 
-        public void Uppg15()
+        public void Uppg15()        // Addera alla tal från inputsträng
         {
             Console.Clear();
-            Console.WriteLine("* ** *** Uppgift 15 -   *** ** *\n");
+            Console.WriteLine("* ** *** Uppgift 15 - Addera alla tal  *** ** *\n");
 
+            char[] charsToTrim = { ' ',',' };
+            int j = 0;
 
+            Console.WriteLine("Skriv in ett antal tal (avgränsade med kommatecken): ");
+            string inputToAdd = Console.ReadLine();
 
+            //dela upp text-sträng med kommatecken (,) som avdelare
+            string[] inputList = inputToAdd.Split(",");
+            
+            //placera varje separat tal som element i en integer-array  
+            int[] numbersToSort = new int[inputList.Length];
+
+            //Console.Write("\nSträng konverterad till separata tal: ");
+            foreach (string input in inputList)
+            {
+                string result = input.Trim(charsToTrim);
+                numbersToSort[j] = Convert.ToInt32(result);
+                //Console.Write(" " + result);
+                j++;
+            }
+
+            int resultOfAllNumbers = 0;
+
+            for (int i = 0; i < numbersToSort.Length; i++)
+            {
+                resultOfAllNumbers += numbersToSort[i];                
+            }
+
+            Console.WriteLine("\n\nTotalsumma av alla inmatade tal: {0}", resultOfAllNumbers);
 
             GetBack();
+        }
+
+        public class Player
+        {
+            public Player(string name)
+                {
+                UserName = name;
+
+                Random dice = new Random();
+                int slumpTalHealth = dice.Next(1, 100);
+                int slumpTalStrength = dice.Next(1, 100);
+                int slumpTalLuck = dice.Next(1, 12);
+
+                UserHealth = slumpTalHealth;
+                UserStrength = slumpTalStrength;
+                LuckyPunk = slumpTalLuck;
+            }
+            public string UserName { get; }
+            public int UserHealth { get; }
+            public int UserStrength { get; }
+            public int LuckyPunk { get; }
         }
 
         public void Uppg16()
         {
             Console.Clear();
-            Console.WriteLine("* ** *** Uppgift 16 -   *** ** *\n");
+            Console.WriteLine("* ** *** Uppgift 16 - EN fråga om Klass - Dungeons & Donuts  *** ** *\n");
 
+            Console.WriteLine("Det är möte med finalchefen i gden sista grottan.\n");
+            Console.WriteLine("Ange ditt namn:");
+            string player1name = Console.ReadLine();
+            var player1 = new Player(player1name);
 
+            Console.WriteLine("Ange din motståndares namn:");
+            string player2name = Console.ReadLine();
+            var player2 = new Player(player2name);
 
+            Console.WriteLine("Fighten står mellan:");
+            Console.WriteLine("Namn: {0}", player1.UserName);
+            Console.WriteLine("Hälsa: {0}",player1.UserHealth);
+            Console.WriteLine("Styrka: {0}", player1.UserStrength);
+            Console.WriteLine("Tur: {0}\n", player1.LuckyPunk);
+
+            Console.WriteLine("och\n");
+
+            Console.WriteLine("Namn: {0}", player2.UserName);
+            Console.WriteLine("Hälsa: {0}", player2.UserHealth);
+            Console.WriteLine("Styrka: {0}", player2.UserStrength);
+            Console.WriteLine("Tur: {0}\n\n", player2.LuckyPunk);
+
+            if (player1.LuckyPunk > player2.LuckyPunk)
+            {
+                Console.WriteLine(" {0} är vinnaren!\n\n", player1name);
+            }
+            else if (player1.LuckyPunk < player2.LuckyPunk)
+            {
+                Console.WriteLine(" {0} är vinnaren!\n\n", player2name);
+            }
+            else 
+            {
+                Console.WriteLine("Det är en slips!\n\n");
+            }
 
             GetBack();
         }
