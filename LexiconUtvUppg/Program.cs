@@ -49,7 +49,7 @@ namespace LexiconUtvUppg
                 Console.WriteLine("6. Uppg  6 - Gissa talet");
                 Console.WriteLine("7. Uppg  7 - Skriv textsträng till fil");
                 Console.WriteLine("8. Uppg  8 - Läs textsträng från fil\n");
-                Console.WriteLine("9. Övning 9-16 \n\n");
+                Console.WriteLine("99. Övning 9-16 \n\n");
                 Console.WriteLine("0. Avsluta \n");
 
                 menyVal = Check_Valid(antalMenyval);   // Kontroll av godkända tecken och blockering av annat än siffror
@@ -80,7 +80,7 @@ namespace LexiconUtvUppg
                     case 8:
                         Uppg8();
                         break;
-                    case 9:
+                    case 99:
                         Menu2();
                         break;
                     case 0:                             // Val 0, ger meddelande till användaren och avslutar programmet.
@@ -109,46 +109,46 @@ namespace LexiconUtvUppg
                 Console.WriteLine("* ** *** H U V U D M E N Y (2/2) *** ** *\n");
 
                 Console.WriteLine("Välj ett alternativ (och tryck Enter):\n");
-                Console.WriteLine("1. Uppg  9 - Roten ur det onda");
-                Console.WriteLine("2. Uppg 10 - Multiplikationstabella', ella', ella'");
-                Console.WriteLine("3. Uppg 11 - 2 Arrayer; 1 slumpad, 1 sorterad");
-                Console.WriteLine("4. Uppg 12 - Michael Palin-drome");
-                Console.WriteLine("5. Uppg 13 - Mellanliggande tal");
-                Console.WriteLine("6. Uppg 14 - Sortera Udda/Jämna");
-                Console.WriteLine("7. Uppg 15 - Addera tal");
-                Console.WriteLine("8. Uppg 16 - En fråga om Klass eller en Klassfråga?\n");
-                Console.WriteLine("9. Övning 1-9 \n\n");
+                Console.WriteLine("9. Uppg  9 - Roten ur det onda");
+                Console.WriteLine("10. Uppg 10 - Multiplikationstabella', ella', ella'");
+                Console.WriteLine("11. Uppg 11 - 2 Arrayer; 1 slumpad, 1 sorterad");
+                Console.WriteLine("12. Uppg 12 - Michael Palin-drome");
+                Console.WriteLine("13. Uppg 13 - Mellanliggande tal");
+                Console.WriteLine("14. Uppg 14 - Sortera Udda/Jämna");
+                Console.WriteLine("15. Uppg 15 - Addera tal");
+                Console.WriteLine("16. Uppg 16 - En fråga om Klass eller en Klassfråga?\n");
+                Console.WriteLine("99. Övning 1-9 \n\n");
                 Console.WriteLine("0. Avsluta \n");
 
                 menyVal = Check_Valid(antalMenyval);   // Kontroll av godkända tecken och blockering av annat än siffror
 
                 switch (menyVal)
                 {
-                    case 1:
+                    case 9:
                         Uppg9();
                         break;
-                    case 2:
+                    case 10:
                         Uppg10();
                         break;
-                    case 3:
+                    case 11:
                         Uppg11();
                         break;
-                    case 4:
+                    case 12:
                         Uppg12();
                         break;
-                    case 5:
+                    case 13:
                         Uppg13();
                         break;
-                    case 6:
+                    case 14:
                         Uppg14();
                         break;
-                    case 7:
+                    case 15:
                         Uppg15();
                         break;
-                    case 8:
+                    case 16:
                         Uppg16();
                         break;
-                    case 9:
+                    case 99:
                         Menu1();
                         break;
                     case 0:                             // Val 0, ger meddelande till användaren och avslutar programmet.
