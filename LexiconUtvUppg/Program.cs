@@ -657,26 +657,26 @@ namespace LexiconUtvUppg
             GetBack();
         }
 
-        public class Player
-        {
-            public Player(string name)
-                {
-                UserName = name;
+        //public class Player
+        //{
+        //    public Player(string name)
+        //        {
+        //        UserName = name;
 
-                Random dice = new Random();
-                int slumpTalHealth = dice.Next(1, 100);
-                int slumpTalStrength = dice.Next(1, 100);
-                int slumpTalLuck = dice.Next(1, 12);
+        //        Random dice = new Random();
+        //        int slumpTalHealth = dice.Next(1, 100);
+        //        int slumpTalStrength = dice.Next(1, 100);
+        //        int slumpTalLuck = dice.Next(1, 12);
 
-                UserHealth = slumpTalHealth;
-                UserStrength = slumpTalStrength;
-                LuckyPunk = slumpTalLuck;
-            }
-            public string UserName { get; }
-            public int UserHealth { get; }
-            public int UserStrength { get; }
-            public int LuckyPunk { get; }
-        }
+        //        UserHealth = slumpTalHealth;
+        //        UserStrength = slumpTalStrength;
+        //        LuckyPunk = slumpTalLuck;
+        //    }
+        //    public string UserName { get; }
+        //    public int UserHealth { get; }
+        //    public int UserStrength { get; }
+        //    public int LuckyPunk { get; }
+        //}
 
         public void Uppg16()
         {
@@ -692,30 +692,33 @@ namespace LexiconUtvUppg
             string player2name = Console.ReadLine();
             var player2 = new Player(player2name);
 
-            Console.WriteLine("Fighten står mellan:");
+            Console.WriteLine("\nFighten står mellan:\n");
             Console.WriteLine("Namn: {0}", player1.UserName);
             Console.WriteLine("Hälsa: {0}",player1.UserHealth);
             Console.WriteLine("Styrka: {0}", player1.UserStrength);
-            Console.WriteLine("Tur: {0}\n", player1.LuckyPunk);
+            Console.WriteLine("Tur: {0}", player1.LuckyPunk);
 
-            Console.WriteLine("och\n");
+            Console.WriteLine("\noch\n");
 
             Console.WriteLine("Namn: {0}", player2.UserName);
             Console.WriteLine("Hälsa: {0}", player2.UserHealth);
             Console.WriteLine("Styrka: {0}", player2.UserStrength);
             Console.WriteLine("Tur: {0}\n\n", player2.LuckyPunk);
 
-            if (player1.LuckyPunk > player2.LuckyPunk)
+            int player1result = (player1.UserStrength + player1.UserHealth * player1.LuckyPunk);
+            int player2result = (player2.UserStrength + player2.UserHealth * player2.LuckyPunk);
+
+            if (player1result > player2result)
             {
-                Console.WriteLine(" {0} är vinnaren!\n\n", player1name);
+                Console.WriteLine("* ** *** {0} är vinnaren! *** ** *\n\n", player1name);
             }
-            else if (player1.LuckyPunk < player2.LuckyPunk)
+            else if (player1result < player2result)
             {
-                Console.WriteLine(" {0} är vinnaren!\n\n", player2name);
+                Console.WriteLine("*** ** * {0} är vinnaren! * ** ***\n\n", player2name);
             }
             else 
             {
-                Console.WriteLine("Det är en slips!\n\n");
+                Console.WriteLine("- - - Det är en slips! - - -\n\n");
             }
 
             GetBack();
